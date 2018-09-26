@@ -1,0 +1,103 @@
+package ProjectFrontend.controller;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+@Controller
+public class HomeController {
+public HomeController(){
+	System.out.println("HomeController bean is instantiated");
+}
+//http://localhost:8080/project1frontend/home - This request will be handled
+//by this handler method homePage()
+@RequestMapping("/")
+public String homePages()
+{
+	return "homepage";
+}
+
+
+
+@RequestMapping("/aboutus")
+public String abtus()
+{
+	return "aboutus";
+}
+
+@RequestMapping("/product")
+public String prdct()
+{
+	return "product";
+}
+
+@RequestMapping("/gallery")
+public String gall()
+{
+	return "gallery";
+}
+
+@RequestMapping("/contact")
+public String cntct()
+{
+	return "contact";
+}
+
+@RequestMapping("/service")
+public String srvice()
+{
+	return "service";
+}
+
+@RequestMapping("/feedback")
+public String feedbck()
+{
+	return "feedback";
+}
+
+
+
+@RequestMapping("/login")
+public String log()
+{
+	return "login";
+}
+
+
+@RequestMapping(value="/login", method =RequestMethod.POST)
+public String loginProcess(HttpServletRequest req,HttpServletResponse res)
+throws ServletException,IOException
+{
+	System.out.println("inside validation method");
+	String uname=req.getParameter("username");
+	String pass=req.getParameter("password");
+	while(uname !=null && pass !=null)
+	{
+		if(uname.equals("admin") && (pass.equals("admin")))
+		{
+			System.out.println("LOGIN SUCCESSFUL");
+			return admin;
+		}
+		else
+		{
+			return login;
+		}
+	}
+	return pass;
+}
+
+
+
+
+
+
+
+
+@RequestMapping("/signup")
+public String sign()
+{
+	return "signup";
+}
+}
+

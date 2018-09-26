@@ -1,0 +1,106 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ include file="header.jsp"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="ISO-8859-1">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/css/sample.css" rel="stylesheet">
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+</head>
+<body background="resources/images/door.jpg">
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <img src="resources/images/logo.jpg" height="100" width="200"></img>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+     <li class="nav-item">
+        <a class="nav-link" href="homepage">HOME<span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="aboutus">ABOUT US</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link " href="#">PRODUCTS</a>
+      </li>
+      
+      
+      
+      <li class="nav-item">
+        <a class="nav-link " href="#">GALLERY</a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link " href="#">CONTACT</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="#">SERVICES</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " href="feedback">FEEDBACK</a>
+      </li>
+      </ul>
+    
+    </div>
+    
+    </nav>
+
+
+
+
+	<div class="container">
+		<b>List of Products</b>
+		<table class="table table-striped" border="1">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Product Name</th>
+					<th>Price</th>
+					
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- For each object in the list, tr has to be repeated -->
+				<!--  items refers to the collection of objects -->
+				<!-- var is local variable ,takes objects one by one from the collection -->
+				<c:forEach var="p" items="${productsList }">
+					<tr >
+						<td><a
+							href="<c:url value='/all/getproduct/${p.id }'></c:url>">${p.id }</a></td>
+						<td><a
+							href="<c:url value='/all/getproduct/${p.id }'></c:url>">${p.productname }</a></td>
+						<td>${p.price }</td>
+						<%--<td>${p.category.categoryname }</td>
+						<td> --%>
+						<td>
+						<span>
+						  <a href="<c:url value='/getproduct/${p.id }'></c:url>">
+							
+								class="glyphicon glyphicon-info-sign"></span></a> 
+								<a href="<c:url value='/deleteproduct/${p.id }'></c:url>"><span
+								class="glyphicon glyphicon-trash"></span></a> 
+								
+								<a href="<c:url value='/getupdateform/${p.id }'></c:url>"><span
+								class="glyphicon glyphicon-pencil"></span></a></td>
+
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+
+	</div>
+</body>
+</html>

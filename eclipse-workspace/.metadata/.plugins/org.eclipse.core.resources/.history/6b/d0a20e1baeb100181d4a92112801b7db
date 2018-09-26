@@ -1,0 +1,73 @@
+package com.niit.dao;
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.niit.models.Authorities;
+import com.niit.models.Customer;
+@Repository
+@Transactional
+public class CustomerDaoImpl implements CustomerDao {
+	@Autowired
+private SessionFactory sessionFactory;
+	public void registerCustomer(Customer customer) {
+	   Session session=sessionFactory.getCurrentSession();
+	   
+	   //SET ENABLED property in USER as true
+	   customer.getUser().setEnabled(true);
+	   
+	   System.out.println(customer.getUser().getAuthorities());
+	   
+	   //CREATE new AUTHORITIES OBJECT AND SET THE ROLE AS ROLE_USER
+	   Authorities authorities=new Authorities();
+	   authorities.setRole("ROLE_USER");
+	   //AUTHORITIES PROPERTY IN USER REFERS TO AUTHORITIES OBJECT
+	   customer.getUser().setAuthorities(authorities);
+	   
+	   //MAKE USER PROPERTY IN AUTHORITIES TO REFER USER OBJECT
+	   authorities.setUser(customer.getUser());
+	   
+	   
+	   session.save(customer);
+	   //has to insert into customer table
+	}
+
+}
+
+
+CustomerController
+-------------------
+package com.niit.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.niit.dao.CustomerDao;
+import com.niit.models.Customer;
+
+@Controller
+public class CustomerController {
+	@Autowired
+	private CustomerDao customerDao;
+@RequestMapping(value="/all/registrationform")
+public String getRegistrationForm(Model model){
+	model.addAttribute("customer",new Customer());
+	return "registrationform";
+}
+@RequestMapping(value="/all/registercustomer")
+public String registerCustomer(@ModelAttribute(name="customer") Customer customer){
+
+	
+	
+	//Call DAO to persist customer details
+	customerDao.registerCustomer(customer);
+	return "login";
+}
+}

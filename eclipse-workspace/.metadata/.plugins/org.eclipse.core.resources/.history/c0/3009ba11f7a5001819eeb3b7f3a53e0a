@@ -1,0 +1,41 @@
+package com.niit.CrudOperations;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+
+import com.niit.configuration.DBConfiguration;
+import com.niit.dao.ProductDao;
+import com.niit.dao.ProductDaoImpl;
+import com.niit.models.Product;
+
+public class App {
+
+	public static void main(String args[]) {
+	ApplicationContext context=new AnnotationConfigApplicationContext(DBConfiguration.class,ProductDaoImpl.class);
+     ProductDao productDao = (ProductDao)context.getBean("productDaoImpl");
+     
+	Product product = new Product();
+	//product.setProductname("ppppp");
+	//product.setProductdesc("dddd");
+	//product.setQuantity(20);
+	//product.setPrice(100);
+	
+	productDao.saveProduct(product);
+	
+	Product product2= productDao.getProduct(1);
+	product2.setProductname("Taps");
+	product2.setProductdesc("Water Taps");
+	product2.setQuantity(20);
+	product2.setPrice(100);
+	
+	productDao.updateProduct(product2);
+	
+	//Product product3= productDao.getProduct(4);
+
+	
+	//productDao.deleteProduct(product3);
+	
+	
+	}
+	
+}

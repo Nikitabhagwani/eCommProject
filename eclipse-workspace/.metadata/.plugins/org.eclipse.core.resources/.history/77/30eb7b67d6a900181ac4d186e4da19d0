@@ -1,0 +1,49 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="resources/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/css/sample.css" rel="stylesheet">
+<script type="text/javascript"
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
+</head>
+<body background="resources/images/interior2.jpg>
+
+<!--    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <img src="resources/images/logo.jpg" height="100" width="200"></img>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+     <li class="nav-item">
+        <a class="nav-link" href="homepage">HOME<span class="sr-only"></span></a>
+      </li>
+
+<li><a href="<c:url value='/all/getallproducts'></c:url>">Browse all products</a>
+				</li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown">Category<span class="caret"></span></a>
+					
+				<ul class="dropdown-menu">
+				<li><a href="#">Kitchen and Dining</a></li>
+				<li><a href="#">Furniture</a><li>
+				<li><a href="#">All</a></li>
+				</ul>
+			   </li>
+			   <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span></a></li>
+				
+				<li><a href="#">LOGOUT</a></li>
+			
+			</ul>
+			</div>
+		</nav>
+	</div>  --> 
+	</body>
+</html>
